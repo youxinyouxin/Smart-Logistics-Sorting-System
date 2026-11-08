@@ -1,0 +1,94 @@
+/* 中国地图与地区排行的组件级样式（不修改全局样式） */
+
+.map-canvas {
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+.map-canvas__chart {
+  width: 100%;
+  height: 100%;
+}
+
+.map-canvas:focus-visible {
+  outline: 2px solid var(--focus);
+}
+
+.map-tip {
+  position: absolute;
+  z-index: 30;
+  min-width: 132px;
+  max-width: 220px;
+  padding: 8px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  background: var(--bg-panel);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-control);
+  box-shadow: var(--shadow-overlay);
+  color: var(--text-1);
+  font-size: 0.875rem;
+  line-height: 1.4;
+  pointer-events: none;
+}
+
+.map-tip strong {
+  font-size: 0.9375rem;
+  font-weight: 600;
+}
+
+.map-tip span {
+  color: var(--text-2);
+  font-variant-numeric: tabular-nums;
+}
+
+/* 排行在容器内滚动，展开不推挤地图；8 行 * 52px 为默认可视高度。 */
+.ranking-panel.ranking-panel--chart {
+  max-height: none;
+}
+
+.ranking-panel--chart .ranking-list {
+  flex: 1 1 auto;
+  max-height: 416px;
+}
+
+.ranking-panel__count {
+  color: var(--text-2);
+  font-size: 0.9375rem;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.ranking-row__value--missing,
+.ranking-row__share--missing {
+  color: var(--text-3);
+}
+
+.ranking-row--selected:hover {
+  background: var(--brand-50);
+}
+
+.ranking-toggle {
+  width: 100%;
+  min-height: 48px;
+  margin-top: 4px;
+  padding: 0 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-top: 1px solid var(--border);
+  background: transparent;
+  color: var(--brand-700);
+  font-weight: 500;
+  font-size: 0.9375rem;
+}
+
+.ranking-toggle:hover {
+  background: var(--bg-subtle);
+}
+
+:root[data-theme="dark"] .ranking-toggle {
+  color: var(--brand-500);
+}

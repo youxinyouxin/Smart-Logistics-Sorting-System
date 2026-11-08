@@ -1,0 +1,263 @@
+.rules-page {
+  max-width: 1040px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.rules-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.rules-panel__head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.rules-panel__head > svg {
+  color: var(--text-2);
+  flex: none;
+}
+
+.rules-threshold-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.rules-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+  align-items: end;
+}
+
+.rules-check {
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  min-height: 48px;
+  padding-top: 22px;
+}
+
+.rules-check input {
+  width: 22px;
+  height: 22px;
+  accent-color: var(--brand-600);
+}
+
+.rule-builder {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 14px;
+  background: var(--bg-page);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-control);
+}
+
+.rule-conditions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.rule-condition {
+  display: grid;
+  grid-template-columns: 62px minmax(110px, 1.2fr) minmax(88px, 0.8fr) minmax(88px, 0.7fr) 44px 48px;
+  align-items: center;
+  gap: 8px;
+  padding: 8px;
+  background: var(--bg-panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-control);
+}
+
+.rule-condition__index {
+  color: var(--text-2);
+  font-size: 0.875rem;
+  white-space: nowrap;
+}
+
+.rule-condition__unit {
+  color: var(--text-2);
+  font-size: 0.8125rem;
+  white-space: nowrap;
+}
+
+.rule-condition .input,
+.rule-condition .select {
+  min-height: 44px;
+}
+
+.rules-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.rules-actions--left {
+  justify-content: flex-start;
+}
+
+.rules-inline-select {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-2);
+  font-size: 0.9375rem;
+}
+
+.rules-inline-select .select {
+  width: auto;
+  min-width: 150px;
+}
+
+.rules-message {
+  grid-column: span 2;
+}
+
+.rules-list-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding-top: 8px;
+  border-top: 1px solid var(--border);
+  color: var(--text-2);
+  font-size: 0.9375rem;
+}
+
+.rule-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.rules-empty {
+  padding: 16px 0;
+  color: var(--text-2);
+  font-size: 0.9375rem;
+}
+
+.rule-card {
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-control);
+  background: var(--bg-panel);
+}
+
+.rule-card--disabled {
+  opacity: 0.62;
+}
+
+.rule-card__head {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.rule-card__head > div:first-child {
+  flex: 1 1 300px;
+  min-width: 0;
+}
+
+.rule-card__name {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+.rule-card__summary {
+  margin-top: 4px;
+  color: var(--text-2);
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.rule-card__message {
+  margin-top: 8px;
+  padding: 8px 10px;
+  background: var(--bg-page);
+  border-radius: 4px;
+  color: var(--text-2);
+  font-size: 0.9375rem;
+}
+
+.rule-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 48px;
+  color: var(--text-2);
+  font-size: 0.9375rem;
+  white-space: nowrap;
+}
+
+.rule-switch input {
+  width: 22px;
+  height: 22px;
+  accent-color: var(--brand-600);
+}
+
+.rule-alert__name {
+  font-weight: 600;
+  font-size: 1.125rem;
+  margin-bottom: 8px;
+}
+
+@media (max-width: 767px) {
+  .rules-threshold-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .rule-condition {
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  .rule-condition__index {
+    grid-column: 1 / -1;
+  }
+
+  .rule-condition__unit {
+    display: none;
+  }
+
+  .rule-condition .icon-btn {
+    justify-self: end;
+  }
+
+  .rules-message {
+    grid-column: 1 / -1;
+  }
+
+  .rules-actions {
+    justify-content: stretch;
+  }
+
+  .rules-actions .btn {
+    flex: 1;
+  }
+
+  .rule-card__head {
+    align-items: center;
+  }
+}
+
+@media (max-width: 479px) {
+  .rules-threshold-grid {
+    grid-template-columns: 1fr;
+  }
+}

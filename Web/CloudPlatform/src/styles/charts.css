@@ -1,0 +1,121 @@
+/* Chart components: EnvironmentChart + Pm25Gauge */
+
+.chart-canvas {
+  width: 100%;
+  height: 100%;
+}
+
+.chart-canvas canvas {
+  outline: none;
+}
+
+.chart-legend__swatch--temp {
+  width: 7px;
+  height: 14px;
+  border-radius: 1px;
+  border: 1px solid var(--bg-panel);
+}
+
+.chart-legend__swatch--humidity {
+  width: 11px;
+  height: 14px;
+  border-radius: 1px;
+  opacity: 0.7;
+}
+
+.chart-legend__item--off {
+  color: var(--text-3);
+}
+
+.chart-legend__item--off .chart-legend__line {
+  opacity: 0.45;
+}
+
+.chart-axis-hint {
+  margin: 2px 0;
+}
+
+.chart-readout__seg {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 4px;
+  white-space: nowrap;
+}
+
+.chart-readout__unit {
+  color: var(--text-2);
+}
+
+.chart-readout__source {
+  color: var(--text-3);
+  font-size: 0.8125rem;
+}
+
+.chart-readout__clear {
+  margin-left: auto;
+  min-height: 48px;
+  padding-inline: 8px;
+}
+
+.chart-empty {
+  line-height: 1.6;
+}
+
+/* PM2.5 gauge */
+
+.pm-gauge__arcs {
+  transition: filter 160ms ease, opacity 160ms ease;
+}
+
+.pm-gauge--stale .pm-gauge__arcs {
+  filter: saturate(0.35);
+  opacity: 0.78;
+}
+
+.pm-gauge--stale .pm-center__value {
+  color: var(--text-2);
+}
+
+.pm-grade {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 1.125rem;
+  font-weight: 600;
+  line-height: 1.35;
+  white-space: nowrap;
+}
+
+.pm-gauge .pm-grade svg {
+  width: 18px;
+  height: 18px;
+  flex: none;
+}
+
+.pm-status {
+  display: flex;
+  justify-content: center;
+}
+
+.pm-flags {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 6px;
+}
+
+.pm-flags .badge {
+  min-height: 26px;
+}
+
+.pm-overrange,
+.pm-stale {
+  margin-top: 0;
+}
+
+.pm-gauge-wrap .pm-source {
+  text-align: center;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}

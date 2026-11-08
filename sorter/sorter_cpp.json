@@ -1,0 +1,110 @@
+{
+  "camera": {
+    "index": 20,
+    "width": 1280,
+    "height": 720,
+    "fps": 3.0,
+    "fourcc": "MJPG"
+  },
+  "detection": {
+    "hsv_lo": [
+      15,
+      40,
+      50
+    ],
+    "hsv_hi": [
+      45,
+      215,
+      255
+    ],
+    "roi_top": 220,
+    "roi_polygon": [
+      [
+        110,
+        660
+      ],
+      [
+        110,
+        230
+      ],
+      [
+        1279,
+        250
+      ],
+      [
+        1279,
+        635
+      ]
+    ],
+    "close_ksize": 21,
+    "open_ksize": 7,
+    "min_area": 8000,
+    "max_area": 400000,
+    "min_w": 100,
+    "min_h": 60,
+    "max_aspect": 4.0,
+    "min_fill": 0.35,
+    "min_bottom": 360,
+    "max_bottom": 620
+  },
+  "belt": {
+    "direction": "rtl",
+    "tape_x": 770,
+    "front_lead_px": 49,
+    "back_lead_px": -70,
+    "tape_tolerance_px": 12,
+    "exit_margin_px": 140,
+    "pass_margin_px": 120,
+    "exit_timeout_sec": 12,
+    "motor_cmd": "/usr/bin/python3 /root/sorter/belt_ctl.py daemon --gpio 70 --active-low"
+  },
+  "tracking": {
+    "max_miss_frames": 10,
+    "match_max_dist": 130,
+    "ghost_ttl_sec": 2.5,
+    "lost_grace_sec": 5.0,
+    "min_frames_to_lock": 3,
+    "stable_frames_to_lock": 3,
+    "min_visible_ratio": 0.85,
+    "max_width_jitter": 0.1,
+    "edge_margin_px": 100
+  },
+  "station": {
+    "province": "广东省",
+    "rules": "仓库在深圳；广东省=本地快递(省内)；秦岭淮河以南=货运快递；秦岭淮河以北=空运快递"
+  },
+  "ocr": {
+    "mode": "local_ppocr",
+    "provider": "local",
+    "local_cmd": "/usr/bin/python3 /root/sorter/local_ocr_server.py",
+    "endpoint": "https://aip.baidubce.com/rest/2.0/ocr/v1/general",
+    "credentials_file": "/root/sorter/ocr_credentials.json",
+    "timeout_sec": 20,
+    "rotate": 0,
+    "crop_pad_px": 10,
+    "capture_dir": "/root/sorter/captures",
+    "tmp_dir": "/tmp"
+  },
+  "llm": {
+    "url": "http://127.0.0.1:8080/v1/chat/completions",
+    "timeout_sec": 30,
+    "curl_timeout_sec": 120,
+    "max_tokens": 32,
+    "category_map": {
+      "本地快递": "省内",
+      "货运快递": "货运",
+      "空运快递": "空运"
+    }
+  },
+  "servo": {
+    "cmd": "/root/sorter/servo_pwm set {id} on",
+    "servo_ids": {
+      "货运": "1",
+      "空运": "2"
+    },
+    "timeout_sec": 15
+  },
+  "logging": {
+    "file": "/root/sorter/sorter.log"
+  }
+}

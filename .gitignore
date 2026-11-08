@@ -1,0 +1,35 @@
+# 密钥与本地配置
+qa.conf
+*.secret
+ocr_credentials.json
+.baidu_tts_token.json
+
+# 模型与大文件
+*.gguf
+llama-src.tar.gz
+sorter/llm/bin/
+
+# 构建产物与二进制
+sorter/sorter
+sorter/servo_pwm
+sorter/test_engine
+img/baidu_ocr
+img/env_ask
+img/llm_shipping
+img/parcel_pipeline
+sorter/build/
+Web/CloudPlatform/dist/
+node_modules/
+
+# 运行数据
+*.log
+captures/
+Record/
+record/
+*.wav
+*.mp3
+__pycache__/
+*.pyc
+.env
+venv/
+.venv/

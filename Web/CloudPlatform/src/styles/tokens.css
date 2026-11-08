@@ -1,0 +1,85 @@
+:root {
+  color-scheme: light;
+  --bg-page: #f4f5f7;
+  --bg-panel: #ffffff;
+  --bg-subtle: #e1f3fd;
+  --bg-hover: #f0f2f5;
+  --bg-skeleton: #e8ebef;
+  --brand-500: #f2c200;
+  --brand-600: #d9a800;
+  --brand-700: #8a6200;
+  --brand-50: #fff7d6;
+  --text-1: #26313d;
+  --text-2: #5b6573;
+  --text-3: #6b7684;
+  --border: #dde2e8;
+  --border-strong: #c7ced6;
+  --chart-grid: #e8ebef;
+  --data-temp: #b84b44;
+  --data-humidity: #2f6fb0;
+  --data-light: #2e8b57;
+  --status-ok: #2e7d4f;
+  --status-warn: #b45309;
+  --status-danger: #b3261e;
+  --status-neutral: #6b7684;
+  --pm-good: #3e8e5a;
+  --pm-mid: #c9a227;
+  --pm-high: #c05621;
+  --pm-danger: #b3261e;
+  --focus: #1f5faf;
+  --map-land: #eef1f4;
+  --map-off: #e4e7eb;
+  --overlay: rgba(20, 24, 29, 0.45);
+  --shadow-overlay: 0 8px 24px rgba(38, 49, 61, 0.16);
+  --radius-panel: 8px;
+  --radius-control: 6px;
+  --radius-overlay: 12px;
+  --pad-page: 24px;
+  --pad-panel: 24px;
+  --gap-panel: 16px;
+  --row-h: 56px;
+  --font-sans: "HarmonyOS Sans SC", "MiSans", "Noto Sans SC", "Source Han Sans SC", "PingFang SC",
+    "Microsoft YaHei", sans-serif;
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg-page: #14181d;
+  --bg-panel: #1d232a;
+  --bg-subtle: #25323c;
+  --bg-hover: #2a323b;
+  --bg-skeleton: #262d35;
+  --brand-50: #3a3218;
+  --text-1: #e9edf2;
+  --text-2: #a9b3bf;
+  --text-3: #8b96a3;
+  --border: #333c46;
+  --border-strong: #46515d;
+  --chart-grid: #333c46;
+  --data-temp: #e08079;
+  --data-humidity: #7fb2e5;
+  --data-light: #7ed9a5;
+  --status-ok: #5bbd8a;
+  --status-warn: #e0a458;
+  --status-danger: #ff8a80;
+  --status-neutral: #8b96a3;
+  --pm-good: #5bbd8a;
+  --pm-mid: #d6b24a;
+  --pm-high: #e08a4f;
+  --pm-danger: #ff8a80;
+  --focus: #7fb2e5;
+  --map-land: #252c34;
+  --map-off: #2f3740;
+  --overlay: rgba(0, 0, 0, 0.55);
+  --shadow-overlay: 0 8px 24px rgba(0, 0, 0, 0.42);
+}
+
+:root[data-density="compact"] {
+  --pad-panel: 16px;
+  --gap-panel: 12px;
+  --row-h: 52px;
+}
+
+:root[data-font-scale="large"] {
+  font-size: 17px;
+}

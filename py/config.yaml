@@ -1,0 +1,75 @@
+# 采集服务配置文件
+# main.py 启动时读取一次，修改后需重启 main.py 生效
+
+# main.py 上传/打卡使用的 API 地址（板子本地 API）
+api:
+  base_url: "http://127.0.0.1:81"
+
+# IoT 采集器（Modbus TCP，网口）
+iot:
+  enabled: true             # 是否启动：true 启动 / false 停用
+  ip: "192.168.1.10"        # 采集器 IP
+  port: 502                 # 采集器端口，默认 502
+  device_addr: 1            # 采集器设备地址
+  interval: 1.5               # 采集间隔（秒）
+
+  # 模拟量通道：键为通道号，可选项 0 / 2 / 4，分别对应端子 A0 / A2 / A4
+  # 不需要读取的通道直接删掉对应条目即可，例如只读 A0：
+  #   ai_channels:
+  #     0: {sensor: "备用", unit: "mA"}
+  ai_channels:
+    2:
+      sensor: "温度传感器"
+      unit: "℃"              # 换算：4.375*value/1000-27.5
+    4:
+      sensor: "光照传感器"
+      unit: "lux"            # 换算：1.25*value-5000
+
+  # 数字量输入通道：键为通道号，可选项 0~7（对应 DI1~DI8），值为传感器名称
+  di_channels:
+    0: "烟雾探测器"          # DI1
+    # 1: "人体感应"
+    # 2: "门磁"
+    # 3: "烟雾"
+
+# 烟雾报警：DI1=1 时打开 DO3 报警灯；DI1 归 0 后继续亮 2 秒
+smoke_alarm:
+  enabled: true
+  di_channel: 0             # DI1
+  do_channel: 3             # DO3 报警灯
+  hold_seconds: 2           # 烟雾消失后延时关闭（秒）
+
+# 环境联动控制（由 api_server 执行）
+control:
+  pm25_threshold: 75        # PM2.5 阈值，可通过 API 修改
+  light_threshold: 200      # 光照阈值（lux）
+  fan_do: 1                 # DO1 风扇
+  light_do: 2               # DO2 照明灯
+
+# 多合一传感器（RS485 经 USR-TCP232-410s 透明传输，Modbus RTU over TCP）
+multi_in_one:
+  enabled: true             # 是否启动：true 启动 / false 停用
+  ip: "192.168.1.200"       # 串口终端 IP
+  port: 26                  # 串口终端 Socket A 本地端口
+  device_addr: 1            # 设备地址
+  interval: 3.1               # 采集间隔（秒）；传感器数据约 3 秒更新一次，可按需调大
+  timeout: 3                # 单次应答超时（秒）
+
+# UHF 超高频读卡器（232 口经串口终端接入）+ 工厂大门控制
+# DO 映射：DO4 关门(推出) / DO5 开门(收回) / DO6 绿灯 / DO7 黄灯 / DO8 红灯
+rfid_gate:
+  enabled: true
+  ip: "192.168.1.200"       # 串口终端 IP
+  port: 23                  # 232 端口 Socket A 本地端口
+  command: "FF550000030A0ABB00270003220005517E351C"
+  poll_interval: 1.6        # 两次读卡指令间隔（秒）
+  response_timeout: 3.0     # 5 次轮询应答约 1.5s，留足超时
+  tag_confirm: 2            # 连续 2 帧 5/5 标签记录才开门
+  clear_confirm: 2          # 连续 2 帧 5/5 无卡记录才重新启用
+  start_armed: false        # 启动后先等待清空，避免残留标签导致误开
+  open_seconds: 10          # DO5 开门持续时间
+  green_seconds: 4          # 绿灯持续时间
+  close_seconds: 7         # DO4 关门持续时间
+
+#FE 06 00 00 00 02
+#05 04 00 65 00 01
