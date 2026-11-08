@@ -57,9 +57,9 @@ cmake -B build -DCMAKE_BUILD_TYPE=Release \
   -DCMAKE_C_COMPILER=gcc-14 -DCMAKE_CXX_COMPILER=g++-14 -DLLAMA_CURL=OFF
 cmake --build build -j8 --target llama-server llama-cli
 
-# 模型（体积大，不纳入 Git）
-mkdir -p ~/models
-wget -O ~/models/qwen2.5-0.5b-instruct-q4_k_m.gguf \
+# 模型（已通过 Git LFS 纳入仓库，clone 后自动在 sorter/llm/ 下）
+# 如需手动下载：
+wget -O sorter/llm/qwen2.5-0.5b-instruct-q4_k_m.gguf \
   https://hf-mirror.com/Qwen/Qwen2.5-0.5B-Instruct-GGUF/resolve/main/qwen2.5-0.5b-instruct-q4_k_m.gguf
 
 bash sorter/llm/run_llm_server.sh   # 启动 127.0.0.1:8080
@@ -119,7 +119,7 @@ python3 QA/agent_chat.py --speak "现在环境怎么样"
 2. 本地 OCR 首次加载模型 10–18 秒，之后 2–4 秒/张。
 3. Qwen2.5-0.5B 省份分类准确率约 90%（天津、宁夏易错）。
 4. 硅基流动免费档有 TPM 限流，助手已内置重试 + 本地兜底。
-5. 大文件（GGUF 模型、node_modules、构建产物、运行日志、截图）不在仓库内。
+5. 大文件：GGUF 模型通过 **Git LFS** 提供（clone 前请先 `git lfs install`）；node_modules、构建产物、运行日志、截图不在仓库内。
 
 ## 安全
 

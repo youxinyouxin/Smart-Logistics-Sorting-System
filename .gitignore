@@ -5,7 +5,6 @@ ocr_credentials.json
 .baidu_tts_token.json
 
 # 模型与大文件
-*.gguf
 llama-src.tar.gz
 sorter/llm/bin/
 
